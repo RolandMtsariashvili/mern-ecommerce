@@ -1,0 +1,76 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header {
+  grid-area: header;
+  background-color: #000;
+  color: #fff;
+}
+
+.header__logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+}
+
+.header__right {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header'
+    'main'
+    'footer';
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem 1fr 3rem;
+  height: 100vh;
+}
+
+.main {
+  grid-area: main;
+  padding: 15px;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding-top: 10px;
+}
