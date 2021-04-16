@@ -47,8 +47,17 @@ a {
 .products {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+.product-card {
+  margin: 7px;
+}
+
+.product-card__img {
+  width: 250px;
+  height: 350px;
 }
 
 .grid-container {
@@ -67,10 +76,32 @@ a {
   padding: 15px;
 }
 
+.rating {
+  margin: 8px 0 8px 0;
+}
+
+.rating span {
+  color: #f0c040;
+}
+
+.price {
+  font-size: 22px;
+}
+
 .footer {
   grid-area: footer;
   text-align: center;
   background-color: #000;
   color: #fff;
   padding-top: 10px;
+  position: relative;
+}
+
+.footer p {
+  margin: 0;
+  pad: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
