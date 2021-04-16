@@ -81,7 +81,8 @@ a {
 }
 
 .rating span {
-  color: #f0c040;
+  color: #d6aa32;
+  margin-right: 1.2px;
 }
 
 .price {
