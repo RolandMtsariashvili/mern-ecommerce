@@ -1,0 +1,27 @@
+.Header {
+  padding: 0 5px 0 5px;
+  grid-area: header;
+  background-color: #000;
+  color: #fff;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+  }
+
+  .rightBlock {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

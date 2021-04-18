@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import getRatingStarsClass from './getRatingStarClass';
+import styles from './Rating.module.scss';
 
 export default function Rating(props) {
   const { rating, reviewsNum } = props;
   return (
     <>
-      <div className="rating">
+      <div className={styles.Rating}>
         <span><i className={getRatingStarsClass(rating, 1)} /></span>
         <span><i className={getRatingStarsClass(rating, 2)} /></span>
         <span><i className={getRatingStarsClass(rating, 3)} /></span>

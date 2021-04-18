@@ -1,6 +1,7 @@
 import React from 'react';
 import data from './data';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Product from './components/Product';
 
 function App() {
@@ -16,9 +17,7 @@ function App() {
           </div>
         </div>
       </main>
-      <footer className="footer">
-        <p>All Rights Reserved</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

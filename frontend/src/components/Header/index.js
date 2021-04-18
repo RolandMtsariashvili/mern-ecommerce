@@ -1,15 +1,16 @@
 import React from 'react';
+import styles from './Header.module.scss';
 
 export default function Header() {
   return (
-    <header className="header">
-      <div className="header__wrapper">
+    <header className={styles.Header}>
+      <div className={styles.wrapper}>
         <div>
-          <a href="/" className="header__logo">
+          <a href="/" className={styles.logo}>
             MERNStore
           </a>
         </div>
-        <div className="header__right">
+        <div className={styles.rightBlock}>
           <a href="/cart">Cart</a>
           <a href="/signin">Sign In</a>
         </div>
