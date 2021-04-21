@@ -12,9 +12,10 @@ export default function MessageBox({ variation, children }) {
 
 MessageBox.propTypes = {
   variation: PropTypes.string,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
 };
 
 MessageBox.defaultProps = {
   variation: 'info',
+  children: '',
 };
