@@ -5,16 +5,7 @@ import Product from '../components/Product';
 import styles from './screensStyles/HomeScreen.module.scss';
 import Loading from '../components/Loading';
 import MessageBox from '../components/MessageBox';
-
-function ShowLoadingOrMessage(
-  loading,
-  error,
-  loadingComponent,
-  errorComponent,
-) {
-  if (loading) return loadingComponent;
-  if (error) return errorComponent;
-}
+import ShowLoadingOrError from './utils/showLoadingOrError';
 
 export default function HomeScreen() {
   const dispatch = useDispatch();
@@ -26,7 +17,7 @@ export default function HomeScreen() {
   return (
     <div className="container">
       {
-        ShowLoadingOrMessage(
+        ShowLoadingOrError(
           loading,
           error,
           <Loading theme="dark" />,
