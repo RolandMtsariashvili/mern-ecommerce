@@ -105,3 +105,48 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+/* Shopping Cart */
+.cart-button {
+  position: fixed;
+  display: flex;
+  border: none;
+  align-items: center;
+  flex-direction: column;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  top: calc(50% - 64px);
+  padding: 25px;
+  background-color: #000;
+  right: 0;
+  cursor: pointer;
+  font-size: 25px;
+
+}
+
+.cart-button__counter {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.fa-shopping-cart {
+  color: #fff;
+}
+
+aside {
+  position: fixed;
+  height: 100vh;
+  background-color: #fff;
+  width: 100%;
+  max-width: 400px;
+  z-index: 10000;
+  transform: translateX(100vw);
+  transition: all 0.5s;
+}
+
+aside.open {
+  transform: translateX(calc(100vw - 400px));
+  /* left: calc(100% - 400px); */
+}

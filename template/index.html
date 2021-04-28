@@ -90,14 +90,125 @@
             </div>
             <div class="price">$120</div>
           </div>
-
+          <div class="product-card">
+            <a href="#">
+              <img class="product-card__img" src="https://via.placeholder.com/250x350">
+            </a>
+            <a href="#">
+              <h2>Product 4</h2>
+            </a>
+            <div class="rating">
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
+            <div class="price">$120</div>
+          </div>
+          <div class="product-card">
+            <a href="#">
+              <img class="product-card__img" src="https://via.placeholder.com/250x350">
+            </a>
+            <a href="#">
+              <h2>Product 4</h2>
+            </a>
+            <div class="rating">
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
+            <div class="price">$120</div>
+          </div>
+          <div class="product-card">
+            <a href="#">
+              <img class="product-card__img" src="https://via.placeholder.com/250x350">
+            </a>
+            <a href="#">
+              <h2>Product 4</h2>
+            </a>
+            <div class="rating">
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
+            <div class="price">$120</div>
+          </div>
+          <div class="product-card">
+            <a href="#">
+              <img class="product-card__img" src="https://via.placeholder.com/250x350">
+            </a>
+            <a href="#">
+              <h2>Product 4</h2>
+            </a>
+            <div class="rating">
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
+            <div class="price">$120</div>
+          </div>
+          <div class="product-card">
+            <a href="#">
+              <img class="product-card__img" src="https://via.placeholder.com/250x350">
+            </a>
+            <a href="#">
+              <h2>Product 4</h2>
+            </a>
+            <div class="rating">
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
+            <div class="price">$120</div>
+          </div>
+          <div class="product-card">
+            <a href="#">
+              <img class="product-card__img" src="https://via.placeholder.com/250x350">
+            </a>
+            <a href="#">
+              <h2>Product 4</h2>
+            </a>
+            <div class="rating">
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
+            <div class="price">$120</div>
+          </div>
         </div>
       </div>
+      <button class="cart-button" id="button">
+        <span class="cart-button__counter">2</span>
+        <i class="fa fa-shopping-cart"></i>
+      </button>
     </main>
     <footer class="footer">
       <p>All Rights Reserved</p>
     </footer>
+    <aside id="aside" class="">
+
+    </aside>
   </div>
+  <script>
+    document.addEventListener("click", (event) => {
+      if (event.target.id == 'button') return;
+      aside.classList.remove('open');
+    });
+    button.addEventListener('click', () => {
+      aside.classList.add('open');
+    });
+  </script>
 </body>
 
 </html>

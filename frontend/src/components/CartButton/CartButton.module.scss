@@ -1,0 +1,23 @@
+.CartButton {
+  position: fixed;
+  display: flex;
+  border: none;
+  align-items: center;
+  flex-direction: column;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  top: calc(50vh - 73px);
+  right: 0;
+  padding: 25px;
+  background-color: #000;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+
+  // .counter {
+    
+    
+  //   margin-bottom: 8px;
+  // }
+}
