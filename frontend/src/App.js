@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import HomeScreen from './screens/HomeScreen';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductScreen from './screens/ProductScreen';
 import CartButton from './components/CartButton';
 import CartModal from './components/CartModal/index';
+import { cartModal } from './store/actions/cartActions';
 
 function App() {
-  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
-  const clickEventListener = (e) => {
-    if (e.target.closest('#cart-button') || (e.target.closest('aside') && !e.target.closest('#close-btn'))) {
-      setIsCartModalOpen(true);
-    } else {
-      setIsCartModalOpen(false);
-    }
+  const isCartModalOpen = useSelector((state) => state.cart.isCartModalOpen);
+
+  const dispatch = useDispatch();
+  const openModalClickHandler = () => {
+    dispatch(cartModal(true));
   };
-  document.body.addEventListener('click', clickEventListener);
+
+  const closeModalClickHandler = () => {
+    dispatch(cartModal(false));
+  };
 
   return (
     <BrowserRouter>
@@ -24,11 +27,14 @@ function App() {
         className="grid-container"
       >
         <Header />
-        <CartModal isCartModalOpen={isCartModalOpen} clickEventListener={clickEventListener} />
+        <CartModal
+          isCartModalOpen={isCartModalOpen || false}
+          closeModalClickHandler={closeModalClickHandler}
+        />
         <main className="main">
           <Route path="/" component={HomeScreen} exact />
           <Route path="/product/:id" component={ProductScreen} />
-          <CartButton clickEventListener={clickEventListener} />
+          <CartButton openModalClickHandler={openModalClickHandler} />
         </main>
         <Footer />
       </div>

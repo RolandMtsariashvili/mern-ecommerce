@@ -11,7 +11,6 @@ export default function Header() {
           </a>
         </div>
         <div className={styles.rightBlock}>
-          <a href="/cart">Cart</a>
           <a href="/signin">Sign In</a>
         </div>
       </div>

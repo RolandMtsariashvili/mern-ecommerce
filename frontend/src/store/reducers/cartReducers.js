@@ -1,8 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../constants/cartConstants';
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  CART_MODAL,
+} from '../constants/cartConstants';
 
 export const cartReducer = (
-  state = { cartItems: [] },
+  state = { cartItems: [], isCartModalOpen: false },
   action,
 ) => {
   switch (action.type) {
@@ -22,7 +26,13 @@ export const cartReducer = (
     }
     case REMOVE_FROM_CART:
       return {
+        ...state,
         cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
+    case CART_MODAL:
+      return {
+        ...state,
+        isCartModalOpen: action.payload,
       };
     default:
       return state;

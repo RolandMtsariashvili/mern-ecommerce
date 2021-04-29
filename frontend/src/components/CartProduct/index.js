@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../../store/actions/cartActions';
 import styles from './CartProduct.module.scss';
+import { removeFromCart } from '../../store/actions/cartActions';
 
-export default function CartProduct({ key, cartItem }) {
+export default function CartProduct({ cartItem }) {
   const dispatch = useDispatch();
+  const removeHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
   return (
-    <div key={key}>
+    <div className={styles.Product}>
       <img
         src={cartItem.image}
         alt={cartItem.description}
@@ -33,7 +36,7 @@ export default function CartProduct({ key, cartItem }) {
       <button
         className={styles.remove}
         type="button"
-        onClick={dispatch(removeFromCart('1'))}
+        onClick={() => removeHandler(cartItem.product)}
       >
         Remove
       </button>
@@ -42,6 +45,5 @@ export default function CartProduct({ key, cartItem }) {
 }
 
 CartProduct.propTypes = {
-  key: PropTypes.string.isRequired,
   cartItem: PropTypes.instanceOf(Object).isRequired,
 };
