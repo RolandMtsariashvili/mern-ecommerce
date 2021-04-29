@@ -1,8 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../../store/actions/cartActions';
 import styles from './CartModal.module.scss';
 
 export default function CartModal({ isCartModalOpen, clickEventListener }) {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
+  const removeHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <aside className={`${styles.CartModal} ${isCartModalOpen ? styles.open : ''}`}>
       <div className={styles.top}>
@@ -14,62 +23,41 @@ export default function CartModal({ isCartModalOpen, clickEventListener }) {
         </button>
       </div>
       <div className={styles.products}>
-        <div className={styles.product}>
-          <img
-            src="https://via.placeholder.com/250x350"
-            alt="pic"
-            className={styles.img}
-          />
-          <div className={styles.info}>
-            <p className={styles.productName}>Bershka Slim Shirt</p>
-            <p>Price: $17</p>
-            <p>
-              Quantity:
-              <span className={styles.quantity}>2</span>
-            </p>
-          </div>
-          <button className={styles.remove} type="button">
-            Remove
-          </button>
-        </div>
-
-        <div className={styles.product}>
-          <img
-            src="https://via.placeholder.com/250x350"
-            alt="pic"
-            className={styles.img}
-          />
-          <div className={styles.info}>
-            <p className={styles.productName}>Bershka Slim Shirt</p>
-            <p>Price: $17</p>
-            <p>
-              Quantity:
-              <span className={styles.quantity}>2</span>
-            </p>
-          </div>
-          <button className={styles.remove} type="button">
-            Remove
-          </button>
-        </div>
-
-        <div className={styles.product}>
-          <img
-            src="https://via.placeholder.com/250x350"
-            alt="pic"
-            className={styles.img}
-          />
-          <div className={styles.info}>
-            <p className={styles.productName}>Bershka Slim Shirt</p>
-            <p>Price: $17</p>
-            <p>
-              Quantity:
-              <span className={styles.quantity}>2</span>
-            </p>
-          </div>
-          <button className={styles.remove} type="button">
-            Remove
-          </button>
-        </div>
+        {
+          cartItems.map((cartItem) => (
+            <div key={cartItem.product} className={styles.product}>
+              <img
+                src={cartItem.image}
+                alt={cartItem.description}
+                className={styles.img}
+              />
+              <div className={styles.info}>
+                <p className={styles.productName}>
+                  {cartItem.name}
+                </p>
+                <p>
+                  Price:
+                  {' '}
+                  {cartItem.price * cartItem.quantity}
+                </p>
+                <p>
+                  Quantity:
+                  {' '}
+                  <span className={styles.quantity}>
+                    {cartItem.quantity}
+                  </span>
+                </p>
+              </div>
+              <button
+                className={styles.remove}
+                type="button"
+                onClick={() => removeHandler(cartItem.product)}
+              >
+                Remove
+              </button>
+            </div>
+          ))
+        }
       </div>
       <div className={styles.checkout}>
         <div className={styles.subtotal}>
