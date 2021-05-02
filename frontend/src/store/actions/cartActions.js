@@ -13,7 +13,7 @@ export const addToCart = (
   dispatch({
     type: ADD_TO_CART,
     payload: {
-      product: data.id,
+      product: data._id,
       description: data.description,
       name: data.name,
       image: data.image,

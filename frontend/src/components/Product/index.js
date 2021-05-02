@@ -6,15 +6,15 @@ import styles from './Product.module.scss';
 export default function Product(props) {
   const { product } = props;
   return (
-    <div key={product.id} className={styles.Product}>
-      <a href={`/product/${product.id}`}>
+    <div className={styles.Product}>
+      <a href={`/product/${product._id}`}>
         <img
           className={styles.img}
           src={product.image}
           alt={product.description}
         />
       </a>
-      <a href={`/product/${product.id}`}>
+      <a href={`/product/${product._id}`}>
         <h2>{product.name}</h2>
       </a>
       <Rating rating={product.rating} reviewsNum={product.reviewsNum} />

@@ -17,7 +17,6 @@ const data = {
   ],
   products: [
     {
-      id: '1',
       name: 'Nike\'s Coat',
       category: 'Coats',
       image: 'https://via.placeholder.com/250x350',
@@ -29,7 +28,6 @@ const data = {
       description: 'High Quality Nike Coat',
     },
     {
-      id: '2',
       name: 'Nike Slim trousers',
       category: 'trousers',
       image: 'https://via.placeholder.com/250x350',
@@ -41,7 +39,6 @@ const data = {
       description: 'Brand New Slim Trousers',
     },
     {
-      id: '3',
       name: 'Zara\'s Shirt',
       category: 'Shirts',
       image: 'https://via.placeholder.com/250x350',
@@ -53,7 +50,6 @@ const data = {
       description: 'Zara\'s skinny shirt',
     },
     {
-      id: '4',
       name: 'H&M Baseball Hat',
       category: 'hats',
       image: 'https://via.placeholder.com/250x350',
