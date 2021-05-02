@@ -1,7 +1,16 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { signOut } from '../../store/actions/userActions';
 import styles from './Header.module.scss';
 
 export default function Header() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const dispatch = useDispatch();
+  const signOutHandler = () => {
+    dispatch(signOut());
+  };
   return (
     <header className={styles.Header}>
       <div className={styles.wrapper}>
@@ -11,7 +20,28 @@ export default function Header() {
           </a>
         </div>
         <div className={styles.rightBlock}>
-          <a href="/signin">Sign In</a>
+          {
+            userInfo
+              ? (
+                <div className={styles.dropdown}>
+                  <div>
+                    {userInfo.name}
+                    {' '}
+                    <i className="fa fa-caret-down" />
+                    {' '}
+                  </div>
+                  <ul className={styles.dropdownContent}>
+                    <li>
+                      <button type="button" onClick={signOutHandler}>
+                        Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <Link to="/signin">Sign In</Link>
+              )
+          }
         </div>
       </div>
     </header>

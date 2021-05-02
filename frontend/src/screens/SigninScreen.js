@@ -1,16 +1,35 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './screensStyles/SigninScreen.module.scss';
+import { signIn } from '../store/actions/userActions';
+import Loading from '../components/Loading';
+import MessageBox from '../components/MessageBox';
 
-export default function SigninScreen() {
+export default function SigninScreen({ location: { search }, history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const redirect = search ? search.split('=')[1] : '/';
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const {
+    userInfo,
+    loading,
+    error,
+  } = userSignin;
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    // Signin actions
+    dispatch(signIn(email, password));
   };
 
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, redirect, userInfo, error]);
   return (
     <div className={styles.SignIn}>
       <form onSubmit={submitHandler} className={styles.form}>
@@ -51,6 +70,13 @@ export default function SigninScreen() {
           </span>
         </div>
       </form>
+      {loading && <Loading theme="light" />}
+      {error && <MessageBox variation="error">{error}</MessageBox>}
     </div>
   );
 }
+
+SigninScreen.propTypes = {
+  history: PropTypes.instanceOf(Array).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+};
