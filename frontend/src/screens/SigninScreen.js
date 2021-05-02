@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -77,6 +76,6 @@ export default function SigninScreen({ location: { search }, history }) {
 }
 
 SigninScreen.propTypes = {
-  history: PropTypes.instanceOf(Array).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
 };
