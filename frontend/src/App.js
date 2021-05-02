@@ -8,6 +8,7 @@ import ProductScreen from './screens/ProductScreen';
 import CartButton from './components/CartButton';
 import CartModal from './components/CartModal/index';
 import { cartModal } from './store/actions/cartActions';
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
   const isCartModalOpen = useSelector((state) => state.cart.isCartModalOpen);
@@ -32,6 +33,7 @@ function App() {
           closeModalClickHandler={closeModalClickHandler}
         />
         <main className="main">
+          <Route path="/signin" component={SigninScreen} />
           <Route path="/" component={HomeScreen} exact />
           <Route path="/product/:id" component={ProductScreen} />
           <CartButton openModalClickHandler={openModalClickHandler} />
