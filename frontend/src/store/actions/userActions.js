@@ -4,6 +4,9 @@ import {
   USER_SIGNIN_SUCCESS,
   USER_SIGNIN_FAIL,
   USER_SIGNOUT,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_FAIL,
+  USER_REGISTER_SUCCESS,
 } from '../constants/userConstants';
 import generateErrorMessage from './utils/generateErrorMessage';
 
@@ -36,4 +39,27 @@ export const signOut = () => (dispatch) => {
   localStorage.removeItem('userInfo');
   localStorage.removeItem('cartItems');
   dispatch({ type: USER_SIGNOUT });
+};
+
+export const register = (
+  name,
+  email,
+  password,
+) => async (dispatch) => {
+  dispatch({ type: USER_REGISTER_REQUEST });
+  try {
+    const { data } = await Axios.post('/api/users/register', {
+      name,
+      email,
+      password,
+    });
+    dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
+    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+    localStorage.setItem('userInfo', JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: USER_REGISTER_FAIL,
+      payload: generateErrorMessage(error),
+    });
+  }
 };

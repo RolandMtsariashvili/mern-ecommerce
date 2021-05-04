@@ -63,7 +63,7 @@ export default function SigninScreen({ location: { search }, history }) {
         <div className={styles.register}>
           <span>
             Not Registered Yet?
-            <Link to="/register" className={styles.registerLink}>
+            <Link to={`/register?redirect=${redirect}`} className={styles.registerLink}>
               Create an account
             </Link>
           </span>

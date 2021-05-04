@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
+/* eslint-disable no-alert */
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './screensStyles/RegisterScreen.module.scss';
+import { register } from '../store/actions/userActions';
+import Loading from '../components/Loading';
+import MessageBox from '../components/MessageBox';
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ location: { search }, history }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const submitHandler = () => {
-    // Implement submit action dispatching
+
+  const redirect = search ? search.split('=')[1] : '/';
+
+  const userRegister = useSelector((state) => state.userRegister);
+  const { userInfo, loading, error } = userRegister;
+
+  const dispatch = useDispatch();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (password !== repeatPassword) {
+      alert('Passwords Doesn\'t match');
+    } else {
+      dispatch(register(name, email, password));
+    }
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, redirect, userInfo]);
 
   return (
     <div className={styles.RegisterScreen}>
       <form onSubmit={submitHandler} className={styles.form}>
+        {loading && <Loading theme="dark" />}
+        {error && <MessageBox variation="error">{error}</MessageBox>}
         <h1 className={styles.title}>Sign Up</h1>
         <label htmlFor="name">
           <span>Name</span>
@@ -74,3 +100,8 @@ export default function RegisterScreen() {
     </div>
   );
 }
+
+RegisterScreen.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+};
