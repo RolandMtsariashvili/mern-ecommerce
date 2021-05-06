@@ -1,0 +1,25 @@
+.CheckoutSteps {
+  text-align: center;
+  font-size: 14px;
+
+  span {
+    margin-right: 25px;
+    position: relative;
+    color: #2a9dcc;
+    cursor: pointer;
+
+    &.active {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    &:not(:last-child):after {
+      content: '>';
+      font-weight: bold;
+      color: #999999;
+      right: -15px;
+      cursor: auto;
+      position: absolute;
+    }
+  }
+}

@@ -68,6 +68,7 @@ export default function ProductScreen({ match: { params: { id } } }) {
               <button
                 type="button"
                 className={`${styles.addToCart} ${!product.countInStock ? styles.disabled : ''}`}
+                disabled={!product.countInStock}
                 onClick={addToCartHandler}
               >
                 {product.countInStock ? 'Add To Cart' : 'Not In Stock'}

@@ -1,0 +1,91 @@
+.ShippingInformationScreen {
+  display: flex;
+
+  .informationScreenLeft {
+    width: 60%;
+    background-color: #000;
+    color: #fff;
+    min-height: 100%;
+    padding: 25px 0;
+  }
+
+
+  .informationScreenInner {
+    width: 85%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    .title {
+      margin: 0 0 30px 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      span {
+        font-size: 20px;
+        margin: 15px 0;
+        font-weight: 500;
+      }
+
+      input {
+        border: none;
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        outline: 0;
+      }
+
+      .groupInputs {
+        display: flex;
+        justify-content: space-between;
+
+        label {
+          width: calc(50% - 5px);
+        }
+      }
+
+      button {
+        border: none;
+        margin-top: 10px;
+        border-radius: 5px;
+        height: 60px;
+        background-color: #2a9dcc;
+        color: #fff;
+        font-size: 18px;
+
+        &:hover {
+          background-color: #4eb2db;
+        }
+      }
+    }
+  }
+
+  .orderSummaryContent {
+    width: 40%
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .ShippingInformationScreen {
+    flex-direction: column;
+
+    .informationScreenLeft {
+      width: 100%;
+    }
+
+    .orderSummaryContent {
+      display: none;
+    }
+  }
+}
+
+
+ 

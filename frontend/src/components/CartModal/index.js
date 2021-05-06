@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styles from './CartModal.module.scss';
 import CartProduct from '../CartProduct';
 
-export default function CartModal({ isCartModalOpen, closeModalClickHandler }) {
+export default function CartModal({
+  isCartModalOpen,
+  closeModalClickHandler,
+}) {
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
@@ -44,9 +48,14 @@ export default function CartModal({ isCartModalOpen, closeModalClickHandler }) {
             {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
           </span>
         </div>
-        <button className={styles.checkoutButton} type="button">
-          Begin Checkout
-        </button>
+        <Link to="/shipping">
+          <button
+            className={styles.checkoutButton}
+            type="button"
+          >
+            Begin Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );
