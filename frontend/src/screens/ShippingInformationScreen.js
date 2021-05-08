@@ -5,6 +5,8 @@ import OrderSummaryHeader from '../components/OrderSummaryHeader';
 import styles from './screensStyles/ShippingInformationScreen.module.scss';
 
 export default function ShippingInformationScreen() {
+  const [cartModalOpen, setCartModalOpen] = useState(false);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
@@ -14,10 +16,17 @@ export default function ShippingInformationScreen() {
   const [country, setCountry] = useState('');
   const [phone, setPhone] = useState();
 
+  const orderSummaryClickHandler = () => {
+    setCartModalOpen(!cartModalOpen);
+  };
+
   return (
     <div className={styles.ShippingInformationScreen}>
       <div className={styles.informationScreenLeft}>
-        <OrderSummaryHeader>
+        <OrderSummaryHeader
+          showContentClickHandler={orderSummaryClickHandler}
+          isContentOpen={cartModalOpen}
+        >
           <OrderSummaryContent />
         </OrderSummaryHeader>
         <div className={styles.informationScreenInner}>

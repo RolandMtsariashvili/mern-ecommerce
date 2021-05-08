@@ -2,10 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './OrderSummaryHeader.module.scss';
 
-export default function OrderSummaryHeader({ children }) {
+export default function OrderSummaryHeader({
+  children,
+  showContentClickHandler,
+  isContentOpen,
+}) {
   return (
     <div className={styles.OrderSummaryHeader}>
       <div className={styles.orderSummaryInner}>
+        <button
+          className={styles.orderSummaryButton}
+          type="button"
+          onClick={showContentClickHandler}
+        >
+          {' '}
+        </button>
         <div className={styles.summaryWrapper}>
           <div className={styles.summaryContent}>
             <i className="fa fa-shopping-cart" />
@@ -14,7 +25,10 @@ export default function OrderSummaryHeader({ children }) {
           </div>
         </div>
       </div>
-      <div className={styles.summaryDropdown}>
+      <div className={
+        `${styles.summaryDropdown} ${!isContentOpen ? styles.hidden : ''}`
+        }
+      >
         {children}
       </div>
     </div>
@@ -23,4 +37,6 @@ export default function OrderSummaryHeader({ children }) {
 
 OrderSummaryHeader.propTypes = {
   children: PropTypes.node.isRequired,
+  showContentClickHandler: PropTypes.func.isRequired,
+  isContentOpen: PropTypes.bool.isRequired,
 };
