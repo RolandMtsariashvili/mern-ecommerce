@@ -1,23 +1,51 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import CheckoutSteps from '../components/CheckoutSteps';
 import OrderSummaryContent from '../components/OrderSummaryContent';
 import OrderSummaryHeader from '../components/OrderSummaryHeader';
 import styles from './screensStyles/ShippingInformationScreen.module.scss';
+import { saveShippingAddress } from '../store/actions/cartActions';
 
-export default function ShippingInformationScreen() {
+export default function ShippingInformationScreen({ history }) {
   const [cartModalOpen, setCartModalOpen] = useState(false);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
-  const [appartment, setAppartment] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [country, setCountry] = useState('');
-  const [phone, setPhone] = useState();
+  if (!userInfo) {
+    history.push('/signin');
+  }
+
+  const [name, setName] = useState(shippingAddress.name);
+  const [email, setEmail] = useState(shippingAddress.email);
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [appartment, setAppartment] = useState(shippingAddress.appartment);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
+  const [phone, setPhone] = useState(shippingAddress.phone);
 
   const orderSummaryClickHandler = () => {
     setCartModalOpen(!cartModalOpen);
+  };
+
+  const dispatch = useDispatch();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      saveShippingAddress({
+        name,
+        email,
+        address,
+        appartment: appartment || null,
+        city,
+        postalCode,
+        country,
+        phone: phone || null,
+      }),
+    );
   };
 
   return (
@@ -35,7 +63,7 @@ export default function ShippingInformationScreen() {
             signInStep
             informationStep
           />
-          <form>
+          <form onSubmit={submitHandler}>
             <span>Contact Information</span>
             <label htmlFor="email">
               <input
@@ -122,3 +150,7 @@ export default function ShippingInformationScreen() {
     </div>
   );
 }
+
+ShippingInformationScreen.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+};

@@ -3,6 +3,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   CART_MODAL,
+  SAVE_SHIPPING_ADDRESS,
 } from '../constants/cartConstants';
 
 export const addToCart = (
@@ -37,4 +38,14 @@ export const cartModal = (modalState) => (dispatch) => {
     type: CART_MODAL,
     payload: modalState,
   });
+};
+
+export const saveShippingAddress = (
+  data,
+) => (dispatch) => {
+  dispatch({
+    type: SAVE_SHIPPING_ADDRESS,
+    payload: data,
+  });
+  localStorage.setItem('shippingAddress', JSON.stringify(data));
 };

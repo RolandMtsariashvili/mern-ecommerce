@@ -3,6 +3,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   CART_MODAL,
+  SAVE_SHIPPING_ADDRESS,
 } from '../constants/cartConstants';
 
 export const cartReducer = (
@@ -33,6 +34,11 @@ export const cartReducer = (
       return {
         ...state,
         isCartModalOpen: action.payload,
+      };
+    case SAVE_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;
