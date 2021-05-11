@@ -12,7 +12,7 @@ export default function ShippingInformationScreen({ history }) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const cart = useSelector((state) => state.cart);
-  const { shippingAddress } = cart;
+  const { shippingAddress, cartItems } = cart;
 
   if (!userInfo) {
     history.push('/signin');
@@ -55,7 +55,7 @@ export default function ShippingInformationScreen({ history }) {
           showContentClickHandler={orderSummaryClickHandler}
           isContentOpen={cartModalOpen}
         >
-          <OrderSummaryContent />
+          <OrderSummaryContent cartItems={cartItems} />
         </OrderSummaryHeader>
         <div className={styles.informationScreenInner}>
           <h1 className={styles.title}>Shipping Information</h1>
@@ -145,7 +145,7 @@ export default function ShippingInformationScreen({ history }) {
         </div>
       </div>
       <div className={styles.orderSummaryContent}>
-        <OrderSummaryContent />
+        <OrderSummaryContent cartItems={cartItems} />
       </div>
     </div>
   );

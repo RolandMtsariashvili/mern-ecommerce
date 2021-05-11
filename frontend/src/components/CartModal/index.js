@@ -52,6 +52,7 @@ export default function CartModal({
           <button
             className={styles.checkoutButton}
             type="button"
+            onClick={() => closeModalClickHandler()}
           >
             Begin Checkout
           </button>
