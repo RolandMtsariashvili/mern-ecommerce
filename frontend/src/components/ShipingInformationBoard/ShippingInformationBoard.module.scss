@@ -1,0 +1,32 @@
+.ShippingInformationBoard {
+  width: 100%;
+  color: black;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 0 14px;
+  margin-top: 30px;
+
+  .informationFiled {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    font-size: 14px;
+    
+    &:not(&:first-child) {
+      border-bottom: 1px solid rgb(230, 218, 218);
+    }
+
+    .fieldName {
+      color: #737373;
+      width: 50px;
+    }
+
+    .fieldInfo {
+      color: #333;
+    }
+
+    .link {
+      color: #2a9dcc;
+    }
+  }
+}

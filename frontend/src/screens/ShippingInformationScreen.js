@@ -20,11 +20,11 @@ export default function ShippingInformationScreen({ history }) {
   const [name, setName] = useState(shippingAddress.name);
   const [email, setEmail] = useState(shippingAddress.email);
   const [address, setAddress] = useState(shippingAddress.address);
-  const [appartment, setAppartment] = useState(shippingAddress.appartment);
+  const [appartment, setAppartment] = useState(shippingAddress.appartment ?? '');
   const [city, setCity] = useState(shippingAddress.city);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
-  const [phone, setPhone] = useState(shippingAddress.phone);
+  const [phone, setPhone] = useState(shippingAddress.phone ?? '');
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {

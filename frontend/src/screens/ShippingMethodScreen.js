@@ -7,6 +7,7 @@ import OrderSummaryContent from '../components/OrderSummaryContent';
 import ShippingLeftWrapper from '../components/ShippingLeftWrapper';
 import { savePaymentMethod } from '../store/actions/cartActions';
 import styles from './screensStyles/ShippingMethodScreen.module.scss';
+import ShippingInformationBoard from '../components/ShipingInformationBoard';
 
 export default function ShippingMethodScreen({ history }) {
   const cart = useSelector((state) => state.cart);
@@ -31,26 +32,12 @@ export default function ShippingMethodScreen({ history }) {
             informationStep
             paymentStep
           />
-          <div className={styles.shippingInformation}>
-            <div className={styles.informationField}>
-              <span className={styles.fieldName}>Contact</span>
-              <span className={styles.fieldInfo}>
-                {`${shippingAddress.email}`}
-              </span>
-              <Link to="/shipping" className={styles.link}>
-                Change
-              </Link>
-            </div>
-            <div className={styles.informationField}>
-              <span className={styles.fieldName}>Ship to</span>
-              <span className={styles.fieldInfo}>
-                {`${shippingAddress.address}, ${shippingAddress.appartment ? shippingAddress.appartment : ''} ${shippingAddress.postalCode} ${shippingAddress.city}, ${shippingAddress.country}`}
-              </span>
-              <Link to="/shipping" className={styles.link}>
-                Change
-              </Link>
-            </div>
-          </div>
+          <ShippingInformationBoard
+            informationFields={[
+              { name: 'Contact', info: shippingAddress.email },
+              { name: 'Ship To', info: `${shippingAddress.address}, ${shippingAddress.appartment ? shippingAddress.appartment : ''} ${shippingAddress.postalCode}, ${shippingAddress.city}, ${shippingAddress.country}` },
+            ]}
+          />
           <form className={styles.form} onSubmit={submitHandler}>
             <div className={styles.formHeader}>Shipping Method</div>
             <div className={styles.inputWrapper}>

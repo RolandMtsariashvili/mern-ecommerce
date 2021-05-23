@@ -1,0 +1,61 @@
+.PlaceOrderScreen {
+  display: flex;
+  min-height: 100%;
+
+  .placeOrderScreenInner {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 600px;
+
+    .title {
+      margin: 0 0 30px 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .controllsWrapper {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+
+      button {
+        width: 180px;
+        height: 60px;
+        border: none;
+        font-size: 14px;
+        color: #fff;
+        background-color: #2a9dcc;
+        border-radius: 5px;
+        margin-right: 18px;
+
+        &:hover {
+          background-color: #4eb2db;
+        }
+
+        &:disabled {
+          background-color: #c5c3c3;
+          color: black;
+        }
+
+        &:disabled:hover {
+          background-color: #c5c3c3;
+        }
+      }
+
+      .backLink {
+        color: #2a9dcc;
+      }
+    }
+  }
+
+  .orderSummary {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .orderSummary {
+    display: none;
+  }
+}
