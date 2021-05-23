@@ -11,6 +11,7 @@ import { cartModal } from './store/actions/cartActions';
 import SigninScreen from './screens/SigninScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingInformationScreen from './screens/ShippingInformationScreen';
+import ShippingMethodScreen from './screens/ShippingMethodScreen';
 
 function App() {
   const isCartModalOpen = useSelector((state) => state.cart.isCartModalOpen);
@@ -39,6 +40,7 @@ function App() {
           <Route path="/register" component={RegisterScreen} />
           <Route path="/" component={HomeScreen} exact />
           <Route path="/shipping" component={ShippingInformationScreen} />
+          <Route path="/payment" component={ShippingMethodScreen} />
           <Route path="/product/:id" component={ProductScreen} />
           <CartButton openModalClickHandler={openModalClickHandler} />
         </main>

@@ -1,0 +1,106 @@
+.ShippingMethodScreen {
+  display: flex;
+  min-height: 100%;
+
+  .methodScreenInner {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 600px;
+
+    .title {
+      margin: 0 0 30px 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .shippingInformation {
+      width: 100%;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 0 14px;
+      margin-top: 30px;
+
+      .informationField {
+        display: flex;
+        justify-content: space-between;
+        padding: 14px 0;
+        font-size: 14px;
+
+        &:not(&:first-child) {
+          border-bottom: 1px solid rgb(230, 218, 218);
+        }
+      
+        .fieldName {
+          color: #737373;
+        }
+
+        .fieldInfo {
+          color: #333;
+        }
+
+        .link {
+          color: #2a9dcc;
+        }
+      }
+    }
+
+    .form {
+      margin-top: 40px;
+
+      .formHeader {
+        font-size: 18px;
+      }
+
+      .inputWrapper {
+        margin-top: 15px;
+        background-color: white;
+        color: black;
+        padding: 14px;
+        border-radius: 5px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        input {
+          margin-right: 5px;
+        }
+      }
+
+      .controllsWrapper {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+
+        button {
+          width: 180px;
+          height: 60px;
+          border: none;
+          font-size: 14px;
+          color: #fff;
+          background-color: #2a9dcc;
+          border-radius: 5px;
+          margin-right: 18px;
+
+          &:hover {
+            background-color: #4eb2db;
+          }
+        }
+
+        .backLink {
+          color: #2a9dcc;
+        }
+      }
+    }
+  }
+
+  .orderSummary {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .orderSummary {
+    display: none;
+  }
+}

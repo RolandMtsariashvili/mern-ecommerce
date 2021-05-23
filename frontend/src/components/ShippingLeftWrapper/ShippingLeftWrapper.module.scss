@@ -1,0 +1,13 @@
+.ShippingLeftWrapper {
+  width: 60%;
+  background-color: #000;
+  color: #fff;
+  min-height: 100%;
+  padding: 25px 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .ShippingLeftWrapper {
+    width: 100%;
+  }
+}

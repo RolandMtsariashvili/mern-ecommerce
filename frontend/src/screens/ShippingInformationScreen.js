@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import CheckoutSteps from '../components/CheckoutSteps';
 import OrderSummaryContent from '../components/OrderSummaryContent';
-import OrderSummaryHeader from '../components/OrderSummaryHeader';
 import styles from './screensStyles/ShippingInformationScreen.module.scss';
 import { saveShippingAddress } from '../store/actions/cartActions';
+import ShippingLeftWrapper from '../components/ShippingLeftWrapper';
 
 export default function ShippingInformationScreen({ history }) {
-  const [cartModalOpen, setCartModalOpen] = useState(false);
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const cart = useSelector((state) => state.cart);
@@ -27,10 +26,6 @@ export default function ShippingInformationScreen({ history }) {
   const [country, setCountry] = useState(shippingAddress.country);
   const [phone, setPhone] = useState(shippingAddress.phone);
 
-  const orderSummaryClickHandler = () => {
-    setCartModalOpen(!cartModalOpen);
-  };
-
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
@@ -46,17 +41,14 @@ export default function ShippingInformationScreen({ history }) {
         phone: phone || null,
       }),
     );
+    history.push('/payment');
   };
 
   return (
     <div className={styles.ShippingInformationScreen}>
-      <div className={styles.informationScreenLeft}>
-        <OrderSummaryHeader
-          showContentClickHandler={orderSummaryClickHandler}
-          isContentOpen={cartModalOpen}
-        >
-          <OrderSummaryContent cartItems={cartItems} />
-        </OrderSummaryHeader>
+      <ShippingLeftWrapper
+        cartItems={cartItems}
+      >
         <div className={styles.informationScreenInner}>
           <h1 className={styles.title}>Shipping Information</h1>
           <CheckoutSteps
@@ -71,6 +63,7 @@ export default function ShippingInformationScreen({ history }) {
                 id="email"
                 placeholder="email"
                 value={email}
+                required
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
@@ -81,6 +74,7 @@ export default function ShippingInformationScreen({ history }) {
                 id="name"
                 placeholder="name"
                 value={name}
+                required
                 onChange={(e) => setName(e.target.value)}
               />
             </label>
@@ -90,6 +84,7 @@ export default function ShippingInformationScreen({ history }) {
                 id="address"
                 placeholder="Address"
                 value={address}
+                required
                 onChange={(e) => setAddress(e.target.value)}
               />
             </label>
@@ -109,6 +104,7 @@ export default function ShippingInformationScreen({ history }) {
                   id="postalCode"
                   placeholder="Postal code"
                   value={postalCode}
+                  required
                   onChange={(e) => setPostalCode(e.target.value)}
                 />
               </label>
@@ -118,6 +114,7 @@ export default function ShippingInformationScreen({ history }) {
                   id="city"
                   placeholder="city"
                   value={city}
+                  required
                   onChange={(e) => setCity(e.target.value)}
                 />
               </label>
@@ -128,6 +125,7 @@ export default function ShippingInformationScreen({ history }) {
                 id="country"
                 placeholder="Country"
                 value={country}
+                required
                 onChange={(e) => setCountry(e.target.value)}
               />
             </label>
@@ -143,8 +141,8 @@ export default function ShippingInformationScreen({ history }) {
             <button type="submit">Continue to shipping</button>
           </form>
         </div>
-      </div>
-      <div className={styles.orderSummaryContent}>
+      </ShippingLeftWrapper>
+      <div className={styles.orderSummary}>
         <OrderSummaryContent cartItems={cartItems} />
       </div>
     </div>

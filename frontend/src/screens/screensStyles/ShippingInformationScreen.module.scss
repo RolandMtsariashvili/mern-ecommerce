@@ -1,15 +1,6 @@
 .ShippingInformationScreen {
   display: flex;
 
-  .informationScreenLeft {
-    width: 60%;
-    background-color: #000;
-    color: #fff;
-    min-height: 100%;
-    padding: 25px 0;
-  }
-
-
   .informationScreenInner {
     width: 85%;
     max-width: 600px;
@@ -68,7 +59,7 @@
     }
   }
 
-  .orderSummaryContent {
+  .orderSummary {
     width: 40%
   }
 }
@@ -77,11 +68,7 @@
   .ShippingInformationScreen {
     flex-direction: column;
 
-    .informationScreenLeft {
-      width: 100%;
-    }
-
-    .orderSummaryContent {
+    .orderSummary {
       display: none;
     }
   }
