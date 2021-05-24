@@ -4,6 +4,13 @@ export default function ShowLoadingOrMessage(
   loadingComponent,
   errorComponent,
 ) {
-  if (loading) return loadingComponent;
-  if (error) return errorComponent;
+  // console.log(loading, '---', error);
+  if (loading) {
+    // console.log('i xreturned loading');
+    return loadingComponent;
+  }
+  if (error) {
+    // console.log('i returned an error');
+    return errorComponent;
+  }
 }

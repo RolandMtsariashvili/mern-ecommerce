@@ -8,7 +8,6 @@ import {
   PRODUCT_VIEW_SUCCESS,
   PRODUCT_VIEW_FAIL,
 } from '../constants/productConstants';
-import generateErrorMessage from './utils/generateErrorMessage';
 
 export const listProducts = () => async (dispatch) => {
   dispatch({
@@ -41,7 +40,7 @@ export const viewProduct = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_VIEW_FAIL,
-      payload: generateErrorMessage(error),
+      payload: error.message,
     });
   }
 };

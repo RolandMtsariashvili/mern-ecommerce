@@ -5,6 +5,7 @@ import {
   CART_MODAL,
   SAVE_SHIPPING_ADDRESS,
   SAVE_PAYMENT_METHOD,
+  EMPTY_CART,
 } from '../constants/cartConstants';
 
 export const cartReducer = (
@@ -45,6 +46,11 @@ export const cartReducer = (
       return {
         ...state,
         paymentMethod: action.payload,
+      };
+    case EMPTY_CART:
+      return {
+        ...state,
+        cartItems: [],
       };
     default:
       return state;
