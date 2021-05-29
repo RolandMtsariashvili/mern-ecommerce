@@ -1,0 +1,31 @@
+.OrderScreen {
+  display: flex;
+  min-height: 100%;
+
+  .orderScreenInner {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 600px;
+
+    .title {
+      margin: 0 0 30px 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .orderInformationSection {
+      margin-top: 25px;
+    }
+  }
+
+  .orderSummary {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .orderSummary {
+    display: none;
+  }
+}

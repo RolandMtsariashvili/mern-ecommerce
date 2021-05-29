@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './ShippingInformationBoard.module.scss';
 
-export default function ShippingInformationBoard({ informationFields }) {
+export default function ShippingInformationBoard({ informationFields, noChange = false }) {
   return (
     <div className={styles.ShippingInformationBoard}>
       {
@@ -13,9 +13,11 @@ export default function ShippingInformationBoard({ informationFields }) {
             <span className={styles.fieldInfo}>
               {informationFiled.info}
             </span>
-            <Link to="/shipping" className={styles.link}>
-              Change
-            </Link>
+            {!noChange && (
+              <Link to="/shipping" className={styles.link}>
+                Change
+              </Link>
+            )}
           </div>
         ))
       }
@@ -25,4 +27,9 @@ export default function ShippingInformationBoard({ informationFields }) {
 
 ShippingInformationBoard.propTypes = {
   informationFields: PropTypes.instanceOf(Array).isRequired,
+  noChange: PropTypes.bool,
+};
+
+ShippingInformationBoard.defaultProps = {
+  noChange: false,
 };

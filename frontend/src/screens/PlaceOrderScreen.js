@@ -59,6 +59,7 @@ export default function PlaceOrderScreen({ history }) {
               { name: 'name', info: shippingAddress.name },
               { name: 'contact', info: shippingAddress.email },
               { name: 'ship to', info: `${shippingAddress.country}, ${shippingAddress.city}, ${shippingAddress.address}, ${shippingAddress.appartment ? shippingAddress.appartment : ''}` },
+              { name: 'postal code', info: shippingAddress.postalCode },
               { name: 'method', info: paymentMethod },
             ]}
           />
