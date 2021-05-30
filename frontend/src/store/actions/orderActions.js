@@ -7,6 +7,9 @@ import {
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
+  ORDER_GET_MY_LIST_FAIL,
+  ORDER_GET_MY_LIST_REQUEST,
+  ORDER_GET_MY_LIST_SUCCESS,
 } from '../constants/orderConstants';
 import generateErrorMessage from './utils/generateErrorMessage';
 
@@ -61,6 +64,30 @@ export const showOrderDetails = (
   } catch (error) {
     dispatch({
       type: ORDER_DETAILS_FAIL,
+      payload: generateErrorMessage(error),
+    });
+  }
+};
+
+export const getMyOrderList = () => async (
+  dispatch,
+  getState,
+) => {
+  dispatch({ type: ORDER_GET_MY_LIST_REQUEST });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.get('/api/orders/myorders', {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({
+      type: ORDER_GET_MY_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ORDER_GET_MY_LIST_FAIL,
       payload: generateErrorMessage(error),
     });
   }

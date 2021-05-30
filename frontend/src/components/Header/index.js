@@ -32,7 +32,19 @@ export default function Header() {
                   </div>
                   <ul className={styles.dropdownContent}>
                     <li>
-                      <button type="button" onClick={signOutHandler}>
+                      <Link
+                        to="/orderhistory"
+                        className={styles.dropdownItem}
+                      >
+                        Order History
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        onClick={signOutHandler}
+                        className={styles.dropdownItem}
+                      >
                         Sign Out
                       </button>
                     </li>

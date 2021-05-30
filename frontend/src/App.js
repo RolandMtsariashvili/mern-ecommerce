@@ -14,6 +14,7 @@ import ShippingInformationScreen from './screens/ShippingInformationScreen';
 import ShippingMethodScreen from './screens/ShippingMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
+import OrderHistoryScreen from './screens/OrderHistoryScreen';
 
 function App() {
   const isCartModalOpen = useSelector((state) => state.cart.isCartModalOpen);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/placeorder" component={PlaceOrderScreen} />
           <Route path="/order/:id" component={OrderScreen} />
           <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/orderhistory" component={OrderHistoryScreen} />
           <CartButton openModalClickHandler={openModalClickHandler} />
         </main>
         <Footer />

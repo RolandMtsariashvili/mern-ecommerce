@@ -1,0 +1,29 @@
+.OrderHistoryScreen {
+  min-height: 100%;
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .title {
+      font-family: 'Orbitron', sans-serif;
+      font-family: 50px;
+      text-align: center;
+    }
+    .table {
+      width: 100%;
+      margin: 20px auto;
+
+      thead {
+        background-color: rgb(239, 239, 239);
+      }
+
+      tbody {
+        td {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
